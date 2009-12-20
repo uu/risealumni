@@ -21,7 +21,7 @@ show_all_comments ||= false
           profile_blog_path(blog.profile, blog),
           :method => :delete %>
     <%- end -%>
-    <div class="created_date"><%= t('blog.posted_by_at', :user => blog.profile.full_name, :postdate => blog.updated_at.to_date.to_formatted_s(:rfc822) %> </div>
+    <div class="created_date"><%= t('blog.posted_by_at', :user => blog.profile.full_name, :postdate => blog.updated_at.to_date.to_formatted_s(:rfc822)) %> </div>
   </h3>
   <div class="blog_text">
     <% if @q.nil? %>
