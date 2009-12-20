@@ -2,7 +2,7 @@
 profile ||= @profile
 %>
 
-<% rounded_corner(:size => :small, :title => 'Profile') do %>
+<% rounded_corner(:size => :small, :title => t('profile.profile')) do %>
   <div class="profile_div">
     <%= icon profile, :big %>
     <h2><%= h profile.f(18, :is_long => true) %></h2>
@@ -33,13 +33,13 @@ profile ||= @profile
     <% end %>
     <% if profile.can_see_field("website", @p) %>
       <div class="profile_links">
-        <strong>Website:</strong>
+        <strong><%= t('profile.website') %>:</strong>
         <%= link_to h(profile.website), h(profile.website) %>
       </div>
     <% end %>
     <% if profile.can_see_field("blog", @p)%>
       <div class="profile_links">
-        <strong>Blog:</strong>
+        <strong><%= t('profile.blog') %>:</strong>
         <%= link_to h(profile.blog), h(profile.blog) %>
       </div>
     <% end %>
@@ -51,10 +51,10 @@ profile ||= @profile
     <% end %>
     <% if me %>
       <div class="profile_links">
-        <%= link_to 'My Greetings Calendar', 
+        <%= link_to t('profile.greetings_calendar'), 
                     alumni_friends_events_path(:ics) %>
         <br/>
-        <%= link_to "Send Invites", new_profile_invitation_path(@p), :method => :get %>
+        <%= link_to t('profile.send_invites'), new_profile_invitation_path(@p), :method => :get %>
       </div>
     <% end %>
   </div>

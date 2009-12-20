@@ -2,7 +2,7 @@
   <% batch_details = Profile.get_batch_count %>
   <% unregistered_hash = StudentCheck.unregistered_batch_count %>
   <% batch_count = batch_details.map(&:count).map(&:to_i).sum %>
-  <% rounded_corner(:size => "small", :title => "Group Members (#{batch_count})") do %>
+  <% rounded_corner(:size => "small", :title => t('profile.group_members') + "(#{batch_count})") do %>
     <% batch_details.each do |p| %>
       <% last_person = Profile.latest_in_batch(p.group) %>
       <% total_batch = p.count.to_i + (unregistered_hash[p.group] || 0)%>

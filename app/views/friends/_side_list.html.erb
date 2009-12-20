@@ -6,7 +6,7 @@
   list = profile.send(type).find(:all, :limit => size, :order => 'RAND()') rescue []
   total = profile.send(type).count
   with_friending ||= false
-  title = type == 'followings' ? 'Following' : type
+  title = type == 'followings' ? t('friend.following') : type
   if type == "followings"
     link =  followings_profile_path(@profile)
   elsif type == "followers"
@@ -14,7 +14,7 @@
   else
     link =  profile_friends_path(@profile)
   end
-  see_all = (list.size < total) ? link_to("See All", link) : ""
+  see_all = (list.size < total) ? link_to(t('friend.see_all'), link) : ""
   %>
 
   <%- unless list.empty? -%>

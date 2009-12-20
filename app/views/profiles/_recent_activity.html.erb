@@ -7,7 +7,7 @@ feed_items ||= @feed_items
 <%- unless feed_items.empty? -%>
   <div class="widget_large">
     <span class="widget_lrg_top"></span>
-    <%= slide_up_down_header('show','recent_activities','Recent Activity')%>
+    <%= slide_up_down_header('show','recent_activities', t('profile.recent_activity'))%>
     <div id="recent_activities">
       <% feed_items.each do |feed_item| %>
           <% next unless feed_item.item %>

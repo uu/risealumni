@@ -7,7 +7,7 @@ page ||= "sent"
   <span class="widget_lrg_top"></span>
   <%= render :partial => "header_links"%>
   <%- if list.empty? -%>
-    <div class="comments">No Message</div>
+    <div class="comments"><%= t('message.no_message') %></div>
   <%- else -%>
     <% form_for :message, :url => delete_messages_profile_messages_path(@p), :html => {:id => "message_list"} do |f|%>
       <% list.each do |m| mail_user = (@p == m.sender ? m.receiver : m.sender)%>

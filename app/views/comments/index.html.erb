@@ -9,11 +9,11 @@ profile ||= @profile
 
 
 <% content_for :head do  -%>  
-  <%= auto_discovery_link_tag(:rss, profile_comments_url(@profile, :rss), :title=>"Wall to wall with #{profile.full_name}") %>
+  <%= auto_discovery_link_tag(:rss, profile_comments_url(@profile, :rss), :title=> t('wall_to_wall_with', :user => profile.full_name) %>
 <% end -%>
 
 
-<% rounded_corner(:title => 'Wall-to-Wall') do %>
+<% rounded_corner(:title => t('comment.wall_to_wall')) do %>
   <%= render :partial => 'comments/form' %>
   <div id="<%= "#{dom_id(parent)}_comments" %>">
     <%= render :partial => 'comments/comment', :collection => comments %>

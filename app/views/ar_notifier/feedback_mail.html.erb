@@ -1,4 +1,4 @@
-<%= @name + " (#{@email})" %> sent the following message :
+<%= t('notifier.user_sends_message', :user => @name + " (#{@email})") %>
 
 <%= @feedback.message %>
 <%= render :partial => 'account_mailer/email_footer' %>

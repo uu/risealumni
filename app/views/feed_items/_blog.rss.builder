@@ -1,7 +1,7 @@
 xml = xml_instance unless xml_instance.nil?
 xml.item do
   b = feed_item.item
-  xml.title "#{b.profile.full_name} blogged #{time_ago_in_words b.created_at} ago #{b.title}"
+  xml.title "#{b.profile.full_name} #{t('blogged')} #{time_ago_in_words b.created_at} #{t('ago')} #{b.title}"
   xml.description b.body
   xml.author "#{b.profile.email} (#{b.profile.full_name})"
   xml.pubDate b.updated_at

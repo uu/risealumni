@@ -15,13 +15,13 @@ show_all_comments ||= false
         profile_blog_path(blog.profile, blog)  %>
     <%end%>
     <%- if @my_blog -%>
-      <%= link_to image_tag('edit.png', :title => "Edit blog post"),
+      <%= link_to image_tag('edit.png', :title => t('blog.edit')),
           edit_profile_blog_path(blog.profile, blog)%>
-      <%= link_to image_tag('delete.png', :title => "Delete blog post"),
+      <%= link_to image_tag('delete.png', :title => t('blog.delete')),
           profile_blog_path(blog.profile, blog),
           :method => :delete %>
     <%- end -%>
-    <div class="created_date">Posted by <%= blog.profile.full_name%> at <%= blog.updated_at.to_date.to_formatted_s(:rfc822) %> </div>
+    <div class="created_date"><%= t('blog.posted_by_at', :user => blog.profile.full_name, :postdate => blog.updated_at.to_date.to_formatted_s(:rfc822) %> </div>
   </h3>
   <div class="blog_text">
     <% if @q.nil? %>
@@ -32,18 +32,18 @@ show_all_comments ||= false
   </div>
   <div class="blog_text">
     <%= link_to_function(image_tag('add_comment.png',
-        :title => "Add Comment",
+        :title => t('comment.add'),
         :class => "add_comment"),
       "Element.show('#{dom_id(blog)}_new_comment')",
       :id => "#{blog.id}_add_comment") if @p && @p.is_active %>
     <a href="<%= profile_blog_path(blog.profile,blog) %>">
-      <span id="blog_<%= blog.id %>_comment_size"><%= pluralize(blog.comments.size,'Comment') %></span>
+      <span id="blog_<%= blog.id %>_comment_size"><%= pluralize(blog.comments.size,t('comment.comment')) %></span>
     </a>
     <% if @is_admin && !blog.is_sent? %>
       <%= link_to image_tag("email_go.png",
-        :title => "Send Blog",
+        :title => t('blog.send'),
         :class => 'add_comment'),
-      send_admin_blog_path(blog), :confirm => 'Are you sure? Do you  want to send email to all users?' %>
+      send_admin_blog_path(blog), :confirm => t('blog.send_confirmation') %>
     <% end %>
     <% unless blog.tags.blank? %>
       Tags:

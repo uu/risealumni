@@ -1,7 +1,7 @@
 <%  @tags = Blog.tag_counts %>
 <div class="widget_small">
   <span class="widget_small_top"></span>
-  <div  class="widget_title"> Blog Tags:</div>
+  <div  class="widget_title"><%= t('blog.tags') %>:</div>
   <% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
     <span class = <%= css_class %>  >
       <%=  link_to tag.name, blogs_by_tag_path(tag), :method => :get %>

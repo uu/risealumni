@@ -1,16 +1,16 @@
-<% rounded_corner(:size => :small, :title => 'Login') do  %>
+<% rounded_corner(:size => :small, :title => t('login_entrance')) do  %>
   <% form_for :user, :url => login_path, :method => :post do |f| %>
     <div class="div_field">
-      <label class="label_text" for="username">Username</label>
+      <label class="label_text" for="username"><%= t('username') %></label>
       <%= f.text_field :login, :class => "textbox_small", :id=> "username" %>
     </div>
     <div class="div_field">
-      <label class="label_text" for="password">Password</label>
+      <label class="label_text" for="password"><%= t('password') %></label>
       <%= f.password_field :password, :class => "textbox_small", :id => "password" %>
     </div>
     <div class="div_field">
       <%= check_box_tag 'remember_me', 1, false, :name => 'user[remember_me]', :class => "checkbox" %>
-      <label for="remember" class="label_small">Remember me</label>
+      <label for="remember" class="label_small"><%= t('remember_me') %></label>
     </div>
     <div class="login_btn_container">
       <button class="buttons" type="submit">
@@ -18,7 +18,7 @@
       </button>
     </div>
   <% end %>
-  <div class="login_links_container"><%= link_to "Forgot Password", forgot_password_path, :class => "grey_links_sml"  %></div>
+  <div class="login_links_container"><%= link_to t('account.forgot_password'), forgot_password_path, :class => "grey_links_sml"  %></div>
   <div class="signup">
     <%= link_to image_tag('signup.png'), signup_url %>
   </div>

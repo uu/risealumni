@@ -1,9 +1,9 @@
-<% rounded_corner(:title => "Feedback") do %>
+<% rounded_corner(:title => t('feedback.feedback')) do %>
   <% @feedbacks.each do |f| %>
     <div class="<%= cycle('triplel','triplel','tripler') %>">
       <div class="listitem">
         <h3 class="smaller"><%= link_to h(f.subject), feedback_path(f) %></h3>
-        <%= link_to "Destroy", feedback_path(f), :method => :delete %>
+        <%= link_to t('feedback.delete') , feedback_path(f), :method => :delete %>
       </div>
     </div>
   <% end %>

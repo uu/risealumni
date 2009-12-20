@@ -2,10 +2,10 @@
 xml.instruct! :xml, :version=>"1.0"
 xml.rss(:version=>"2.0") do
   xml.channel do
-    xml.title "#{@profile.full_name}'s Polls"
+    xml.title t('poll.users_polls', :user => @profile.full_name)
     xml.link SITE
-    xml.description "#{@profile.full_name}'s Poll at #{SITE_NAME}"
-    xml.language 'en-us'
+    xml.description t('poll.users_polls', :user => @profile.full_name) + " / #{SITE_NAME}"
+#     xml.language 'en-us'
     @polls.each do |poll|
       xml.item do
         xml.title poll.question

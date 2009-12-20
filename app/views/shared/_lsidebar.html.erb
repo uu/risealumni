@@ -11,13 +11,13 @@
     <% end %>
   <% end %>
   <% cache 'recent_members',5.minutes.from_now do %>
-    <% rounded_corner(:title => 'Newest Members', :size => 'small') do %>
+    <% rounded_corner(:title => t('profile.newest_members'), :size => 'small') do %>
       <%= render :partial => 'profiles/newest_member', :collection => Profile.new_members.all %>
     <% end %>
   <% end %>
   <% cache 'app_flickr_pics',SITE_FLICKR_EXPIRE_TIME_MIN.minutes.from_now do %>
     <% unless sets_flickr_pictures.blank?  && unsets_flickr_pictures.blank?%>
-      <% rounded_corner(:title => "#{SITE_NAME} Picture Gallery", :size => 'small') do %>
+      <% rounded_corner(:title => "#{SITE_NAME} "+t('profile.picture_gallery'), :size => 'small') do %>
         <ul id="mycarousel" class="jcarousel-skin-ie7">
           <% sets_flickr_pictures.each do |f|%>
             <li>

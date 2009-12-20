@@ -12,13 +12,13 @@ class AccountsController < ApplicationController
     if params[:new_password] 
       u = Profile.find_by_email(params[:profile][:email]).user rescue nil
       if u.nil? 
-        flash.now[:error] = "Could not find that email address. Try again."
+        flash.now[:error] = I18n.t('account.error.email_not_found')
         render :action => 'forgot_password'
         return
       else
         @pass = u.forgot_password! #must be @ variable for function tests
         AccountMailer.deliver_forgot_password(u.profile.email, u.full_name, u.login, @pass)
-        flash.now[:notice] = "A new password has been mailed to you."
+        flash.now[:notice] = I18n.t('account.notice.new_password_emailed')
       end
     else
       params[:login] ||= params[:user][:login] if params[:user]
@@ -26,16 +26,16 @@ class AccountsController < ApplicationController
       self.user = User.authenticate(params[:login], params[:password])
       if @u && !@u.email_verified
         reset_session
-        flash[:error] = 'Your email address has not yet been confirmed.'
+        flash[:error] = I18n.t('account.error.email_not_confirmed')
         return false
       elsif @u && @u.email_verified
         #@u.record_login! # Records the time when the user is suucessfully loggedin
         #@u.save!
         remember_me if params[:user][:remember_me] == "1"
-        flash[:notice] = "Hello #{@u.full_name}"
+        flash[:notice] = I18n.t('account.notice.greeting')+" #{@u.full_name}"
         redirect_back_or_default profile_url(@u.profile)
       else
-        flash.now[:error] = "Uh-oh, login didn't work. Do you have caps locks on? Try it again."
+        flash.now[:error] =  I18n.t('account.error.login_not_valid') 
       end
     end
   end
@@ -46,7 +46,7 @@ class AccountsController < ApplicationController
     session[:return_to] = nil
     clear_facebook_session_information
     clear_fb_cookies!
-    flash[:notice] = "You have been logged out."
+    flash[:notice] = I18n.t('account.notice.logged_out')
     redirect_to '/'
   end
 
@@ -84,13 +84,13 @@ class AccountsController < ApplicationController
           wants.js do
             if u.profile.activate!
               self.user = u
-              flash[:notice] = "Hello #{@u.full_name}"
+              flash[:notice] = I18n.t('account.notice.greeting')+" #{@u.full_name}"
               render :update do |page|
                 page.redirect_to profile_path(@u.profile)
               end
             else
               reset_session
-              flash[:notice] = "We're sorry but it seems that there was a problem activating your profile. Please contact the administrators to resolve the issue."
+              flash[:notice] = I18n.t('account.notice.profile_activation_problem') 
               render :update do |page|
                 page.redirect_to home_path
               end
@@ -109,7 +109,7 @@ class AccountsController < ApplicationController
       session[:show_referral_form] = true
       @user = u
       @profile = u.profile
-      @user.errors.add(:captcha, "can't be blank")
+      @user.errors.add(:captcha, I18n.t('account.validation.cant_be_blank'))
       render :update do |page|
         page.replace_html "main_container", :partial => "signup_form"
         page[:user_form].hide
@@ -140,7 +140,7 @@ class AccountsController < ApplicationController
     @u = User.find(params[:user_id]) rescue nil
     if @u && @u.email_verified
       reset_session
-      flash[:notice] = "Your email is already confirmed by us. Please login to continue."
+      flash[:notice] = I18n.t('account.notice.email_already_confirmed') 
       redirect_to login_path
       return true
     end
@@ -150,16 +150,16 @@ class AccountsController < ApplicationController
       if @u.save
         AccountMailer.deliver_email_confirmed_by_user(@u) unless @u.profile.is_active
         reset_session
-        flash[:notice] = "Thanks your email is confirmed by us. Please login to continue"
+        flash[:notice] = I18n.t('account.notice.email_confirmed') 
         redirect_to login_path
       else
         reset_session
-        flash[:notice] = "We're sorry but it seems that there was a problem activating your profile. Please contact the administrators to resolve the issue."
+        flash[:notice] = I18n.t('account.notice.profile_activation_problem')
         redirect_to home_path
       end
     else
       reset_session
-      flash[:notice] = "We're sorry but it seems that the confirmation did not go thru. You may have provided an expired key."
+      flash[:notice] = I18n.t('account.notice.confirmation_invalid') 
       redirect_to login_path
     end
   end
@@ -168,9 +168,9 @@ class AccountsController < ApplicationController
     p = Profile.find_by_email(params[:email])
     render :update do |page|
       if p && p.user.email_verified
-        page.replace_html "email_msg", :inline => "<span id='email_failure' name='email_failure' class='error'>This email has already been taken</span>"
+        page.replace_html "email_msg", :inline => "<span id='email_failure' name='email_failure' class='error'>"+I18n.t('account.validation.email_already_taken')+"</span>"
       else
-        page.replace_html "email_msg", :inline => "<span id='email_success' name='email_success' class='sys_message'>This email is available</span>"
+        page.replace_html "email_msg", :inline => "<span id='email_success' name='email_success' class='sys_message'>"+I18n.t('account.validation.email_available')+"</span>"
       end
     end
   end
@@ -179,9 +179,9 @@ class AccountsController < ApplicationController
     user = User.find_by_login(params[:login])
     render :update do |page|
       if user# && user.email_verified
-        page.replace_html "login_msg", :inline => "<span id='login_failure' name='login_failure' class='error'>This login has already been taken</span>"
+        page.replace_html "login_msg", :inline => "<span id='login_failure' name='login_failure' class='error'>"+I18n.t('account.validation.login_already_taken')+"</span>"
       else
-        page.replace_html "login_msg", :inline => "<span id='login_success' name='login_success' class='sys_message'>This login is available</span>"
+        page.replace_html "login_msg", :inline => "<span id='login_success' name='login_success' class='sys_message'>"+I18n.t('account.validation.login_available')+"</span>"
       end
     end
   end

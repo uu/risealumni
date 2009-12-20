@@ -4,15 +4,15 @@
     <%= icon(poll.profile) %>
     <%= link_to sanitize(poll.question),profile_poll_path(poll.profile, poll)%>
     <%- if @p && me -%>
-      <%= link_to image_tag('cancel.png', :title => "Close poll"), 
+      <%= link_to image_tag('cancel.png', :title => t('post.close') ), 
                   poll_close_profile_poll_path(@profile,poll) unless poll.poll_close? %>
-      <%= link_to image_tag('edit.png', :title => "Edit poll"), 
+      <%= link_to image_tag('edit.png', :title => t('poll.edit')), 
                   edit_profile_poll_path(@profile,poll)if poll.can_edit? %>
-      <%= link_to image_tag('delete.png', :title => "Delete poll"), 
+      <%= link_to image_tag('delete.png', :title => t('poll.delete')), 
                   profile_poll_path(@profile, poll), 
                   :method => :delete %>
     <%- end -%>
-    <div class="created_date">Posted by <%= poll.profile.full_name %> at <%= poll.created_at.to_date.to_formatted_s(:rfc822) %>  </div>
+    <div class="created_date"><%= t('blog.posted_by_at', :user => poll.profile.full_name, :postdate =>  poll.created_at.to_date.to_formatted_s(:rfc822)) %>  </div>
    </h3>
    <div class="poll_text">
     <% if !@p || (poll.responded? @p)%>

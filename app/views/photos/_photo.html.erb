@@ -3,12 +3,12 @@
   <h3 class="blog_head event_head_width">
     <%= icon(photo.profile) %>
     <%= sanitize(photo.caption) %>
-    <%= link_to image_tag('crop.png', :title => "Crop the image"),
+    <%= link_to image_tag('crop.png', :title => t('photo.crop')),
       edit_photo_path(photo).add_param(:blurb_image => @blurb_image)%>
-    <%= link_to image_tag('delete.png', :title => "Delete Image"),
+    <%= link_to image_tag('delete.png', :title => t('photo.delete')),
       photo_path(photo).add_param(:blurb_image => @blurb_image),
       :method => :delete %>
-    <div class="created_date">Posted by <%= photo.profile.full_name%> at <%=photo.updated_at.to_date.to_formatted_s(:rfc822) %> </div>
+    <div class="created_date"><%= t('blog.posted_by_at', :user => photo.profile.full_name, :postdate => photo.updated_at.to_date.to_formatted_s(:rfc822)) %> </div>
   </h3>
   <%= display_image(photo)%>
   <textarea class="image_url image_text_area text_area"readonly="readonly" name="textarea">

@@ -20,7 +20,7 @@ end
   <% form_for :message, :url => profile_messages_path(@p) do |f| %>
     <% f.label_class = 'label_margin'  %>
     <div class="row_complete">
-      <label for="message_to">To</label>
+      <label for="message_to"><%= t('message.to') %></label>
       <%= to_list.to_select :message, 
                             :receiver_id, 
                             :selected=>(params[:message][:receiver_id].to_i rescue ''), 
@@ -28,8 +28,8 @@ end
                             :class => "big_text_field", 
                             :title => "To List" %>
     </div>
-    <%= f.labelled_text_field "Subject", :subject, :title => "Subject",:class => "big_text_field" ,:wrap_class => "row_complete" %>
-    <%= f.labelled_text_area "Body", :body, :title => "Body",:class => "big_text_area",:wrap_class => "row_complete_large" %>
+    <%= f.labelled_text_field t('message.subject'), :subject, :title => t('message.subject'),:class => "big_text_field" ,:wrap_class => "row_complete" %>
+    <%= f.labelled_text_area t('message.body'), :body, :title => t('message.body'),:class => "big_text_area",:wrap_class => "row_complete_large" %>
     <div class="blog_btn_container">
       <button class="buttons" type="submit">
         <%= theme_image("send-message.png") %>

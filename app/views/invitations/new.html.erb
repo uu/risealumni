@@ -1,10 +1,10 @@
-<% rounded_corner(:title => "Invite Batchmates") do %>
+<% rounded_corner(:title => t('invite.invite_batchmates')) do %>
   <div class="edit_panel_profile">
     <% form_for [@profile,@invitation] do |f| %>
       <% f.label_class = 'label_margin' %>
-      <%= f.labelled_text_area('Enter a list of email addresses separated by commas (,)', 
+      <%= f.labelled_text_area(t('invite.email_list'), 
                                :emails,
-                               :title => "Comma Separated List of Emails", 
+                               :title => t('invite.email_list_title'), 
                                :wrap_class => "row_light_large") %>
 
       <div class="invitation_error"><%= @error %></div>

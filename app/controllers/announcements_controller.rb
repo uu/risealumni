@@ -36,12 +36,12 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |format|
       if @announcement.save
-        flash[:notice] = 'Announcement was successfully created.'
+        flash[:notice] = I18n.t('announcement.notice.successfully_created')
         format.html { redirect_to announcements_path }
         format.xml  { render :xml => @announcement, :status => :created, :location => @announcement }
       else
         format.html do
-          flash[:notice] = 'Announcement was not Successfully created'
+          flash[:notice] = I18n.t('announcement.notice.not_successfully_created')
           render :action => "new" 
         end
         format.xml  { render :xml => @announcement.errors, :status => :unprocessable_entity }
@@ -56,12 +56,12 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |format|
       if @announcement.update_attributes(params[:announcement])
-        flash[:notice] = 'Announcement was successfully updated.'
+        flash[:notice] = I18n.t('announcement.notice.successfully_updated')
         format.html { redirect_to announcements_path }
         format.xml  { head :ok }
       else
         format.html do
-          flash[:notice] = 'Announcement was not successfully updated'
+          flash[:notice] = I18n.t('announcement.notice.not_successfully_updated')
           render :action => "edit" 
         end
         format.xml  { render :xml => @announcement.errors, :status => :unprocessable_entity }
@@ -77,7 +77,7 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        flash[:notice] = 'Announcement has been successfully delected'
+        flash[:notice] = I18n.t('announcement.notice.successfully_deleted')
         redirect_to announcements_path 
       end
       format.xml  { head :ok }

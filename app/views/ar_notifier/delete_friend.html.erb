@@ -1,2 +1,2 @@
-<%= @user.full_name %> is Deleted you as freind on <%= SITE_NAME %>
+<%= t('notifier.user_unfriends_you', :user => @user.full_name, :site => SITE_NAME) %>
 <%= render :partial => 'account_mailer/email_footer' %>

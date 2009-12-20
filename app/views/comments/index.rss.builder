@@ -8,10 +8,10 @@ profile ||= @profile
 xml.instruct! :xml, :version=>"1.0"
 xml.rss(:version=>"2.0"){
   xml.channel do
-    xml.title "Wall to wall with #{profile.full_name}"
+    xml.title t('comment.wall_to_wall_with', :user => profile.full_name
     xml.link SITE
-    xml.description "Wall to wall with #{profile.full_name} on #{SITE_NAME}"
-    xml.language 'en-us'
+    xml.description t('comment.wall_to_wall_with', :user => profile.full_name " / #{SITE_NAME}"
+#    xml.language 'en-us'
     comments.each do |c|
       xml.item do
         xml.title commentable_text(c, false)

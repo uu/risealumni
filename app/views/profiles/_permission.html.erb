@@ -4,12 +4,12 @@
     <%= permission.field.to_s.titleize%>
   </td>
   <td>
-    <%= f.radio_button(:permission, "Myself")%>
+    <%= f.radio_button(:permission, t('profile.myself'))%>
   </td>
   <td>
-    <%= f.radio_button(:permission, "Friends")%>
+    <%= f.radio_button(:permission, t('profile.friends'))%>
   </td>
   <td>
-    <%= f.radio_button(:permission, "Everyone")%>
+    <%= f.radio_button(:permission, t('profile.everyone'))%>
   </td>
 </tr>

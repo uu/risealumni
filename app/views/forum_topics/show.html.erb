@@ -1,6 +1,6 @@
 <div class="forum_links">
-  <%= link_to "Back to Forums", forums_path %>|
-  <%= link_to "Back to #{@forum.name}", forum_path(@forum) %>
+  <%= link_to t('forum_topic.back_to_forums'), forums_path %>|
+  <%= link_to t('forum_topic.back_to_forum')+ @forum.name.to_s, forum_path(@forum) %>
 </div>
 <div class="widget_complete">
   <span class="widget_complete_top"></span>
@@ -8,9 +8,9 @@
     <div class="froum_page_title"><%= sanitize(@topic.title)%></div>
     <div class="forum_links">
       <% if @u.is_admin? %>
-        <%= link_to image_tag('edit.png', :title => "Edit Topic"), 
+        <%= link_to image_tag('edit.png', :title => t('forum_topic.edit')), 
                   edit_forum_topic_path(@topic.forum,@topic)%>
-        <%= link_to image_tag('delete.png', :title => "Delete Topic"), 
+        <%= link_to image_tag('delete.png', :title => t('forum_topic.delete')), 
                   forum_topic_path(@topic.forum,@topic), 
                   :method => :delete %>
       <% end %>
@@ -23,7 +23,7 @@
    <%- if @u %>
      <%= render :partial => "forum_posts/form", :locals=>{:css_class=>:followup_post_body} %>
    <%- else %>
-     <h1>Please <%= link_to "login", login_path %> or <%= link_to "sign-up", signup_path %> to participate!</h1>
+     <h1><%= t('account.please_login', :login => link_to(t('login'), login_path), :signup => link_to(t('account.sign_up'), signup_path)) %></h1>
    <%- end %>
  </div>
  <%= will_paginate @posts %>

@@ -6,7 +6,7 @@ comment = feed_item.item
 
 <div id="<%= feed_item.dom_id %>">
   <div class="comments">
-    <img src="/images/callout_bubble.gif" title="User Comment Icon" alt="User Comment Icon" />
+    <img src="/images/callout_bubble.gif" title="<%= t('feed_item.user_comment_icon') %>" alt="<%= t('feed_icon.user_comment_icon') %>" />
     <%= commentable_text comment %>
   </div>
   <%= x_feed_link(feed_item) if me %>

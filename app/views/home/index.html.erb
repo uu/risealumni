@@ -19,8 +19,8 @@
       </div>
       <div class="blurb_image_footer">
         <div>
-          <%= link_to("About The School",page_path(:about_us)) %> | <%= link_to("Feedback",new_feedback_path) %> |
-          <%= link_to("Contact Us",page_path(:contact)) %>| <%= link_to("Credits",page_path(:credits)) %> | <%= link_to("Forums",forums_path) %>
+          <%= link_to(t('home.about_school'),page_path(:about_us)) %> | <%= link_to(t('feedback.feedback'),new_feedback_path) %> |
+          <%= link_to(t('home.contact_us'),page_path(:contact)) %>| <%= link_to(t('home.credits'),page_path(:credits)) %> | <%= link_to(t('forum.forums'),forums_path) %>
         </div>
       </div>
       <div class="image_cycle">

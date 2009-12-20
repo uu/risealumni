@@ -1,4 +1,4 @@
-<%= @p.first_name%> wrote on your Blog
+<%= t('notofier.user_wrote_on_your_blog', :user => @p.first_name %> 
 
 <%= @comment.comment %>
 <%= render :partial => 'account_mailer/email_footer' %>

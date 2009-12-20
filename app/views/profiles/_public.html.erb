@@ -1,7 +1,7 @@
 <% if me or !@profile.default_status? %>
   <div class="widget_large">
     <span class="widget_lrg_top"></span>  
-    <%= slide_up_down_header('show','status_message','Status')%>
+    <%= slide_up_down_header('show','status_message', t('profile.status'))%>
     <div class="middle_panel_profile">
       <div id="status_message">
         <div class="slidecontent">
@@ -22,7 +22,7 @@
 <% cache "profile_#{@profile.id}/profile_#{@profile.id}" do %> 
   <div class="widget_large" >
     <span class="widget_lrg_top"></span>
-    <%= slide_up_down_header('hide','personal_info','Personal Info')%>
+    <%= slide_up_down_header('hide','personal_info',t('profile.personal_info'))%>
     <div class="middle_panel_profile">
       <div id="personal_info" style="display:none;">
         <div class="slidecontent">
@@ -36,17 +36,17 @@
   <% if @profile.can_see_field("work_informations", @p) %>
     <div class="widget_large" >
       <span class="widget_lrg_top"></span>
-      <%= slide_up_down_header('hide','work_info','Work Info')%>
+      <%= slide_up_down_header('hide','work_info',t('profile.work_info'))%>
       <div class="middle_panel_profile">
         <div id="work_info" style="display:none;align:left;">
           <div class="slidecontent">
             <table width ="540px">
               <tr align="left" valign="top">
-                <th>Company Name</th>
-                <th>Industry</th>
-                <th>Occupation</th>
-                <th>Job Description</th>
-                <th>Company Website</th>
+                <th><%= t('profile.company_name')%></th>
+                <th><%= t('profile.industry')%></th>
+                <th><%= t('profile.occupation')%></th>
+                <th><%= t('profile.job_description')%></th>
+                <th><%= t('profile.company_website')%></th>
               </tr>
               <%= render :partial => "work_info",:collection => @profile.work_informations %>
             </table>
@@ -60,15 +60,15 @@
   <% if @profile.can_see_field("educations", @p) %>
     <div class="widget_large" >
       <span class="widget_lrg_top"></span>
-      <%= slide_up_down_header('hide','education_info','Education Info')%>
+      <%= slide_up_down_header('hide','education_info',t('profile.education_info'))%>
       <div class="middle_panel_profile">
         <div id="education_info" style="display:none;">
           <div class="slidecontent">
             <table width ="540px">
               <tr align="left" valign="top"> 
-                <th>From</th>
-                <th>To</th>
-                <th>University</th>
+                <th><%= t('profile.from_year') %></th>
+                <th><%= t('profile.to_year') %></th>
+                <th><%= t('profile.university') %></th>
               </tr>
               <%= render :partial => "education_info",:collection => @profile.educations %>
             </table>
@@ -92,7 +92,7 @@
   <% unless @flickr.blank? %> 
     <div class="widget_large">
       <span class="widget_lrg_top"></span>
-      <%= slide_up_down_header('show','flickr_picture',"Latest Flickr Pictures: #{@profile.flickr_username}")%>
+      <%= slide_up_down_header('show','flickr_picture', t('profile.latest_flickr_pictures') + "#{@profile.flickr_username}")%>
       <div id="flickr_picture">
         <div class="flickr_images">
           <% @flickr.each do |f| %>
@@ -106,7 +106,7 @@
   <%- if @video -%>
     <div class="widget_large">
       <span class="widget_lrg_top"></span>
-      <%= slide_up_down_header('show','youtube_video',"Latest YouTube Videos: #{@profile.youtube_username}")%>
+      <%= slide_up_down_header('show','youtube_video',t('profile.latest_youtube_videos') + " #{@profile.youtube_username}")%>
       <div id="youtube_video">
         <%= @video.embed_html %>
       </div>
@@ -118,7 +118,7 @@
 <% if @profiles %>
   <div class="widget_large">
     <span class="widget_lrg_top"></span>  
-    <%= slide_up_down_header('show','google_map','Google Map')%>
+    <%= slide_up_down_header('show','google_map',t('profile.google_map'))%>
     <div class="middle_panel_profile">
       <div id="google_map">
         <div class="slidecontent">
@@ -137,7 +137,7 @@
 <% end %>
 
 <% if @profile.can_see_field('delicious_name',@p) %>
-  <% rounded_corner(:title => "Del.icio.us Links: #{@profile.delicious_name}") do %>
+  <% rounded_corner(:title => t('profile.delicious_links')+": #{@profile.delicious_name}") do %>
     <div class="middle_panel_profile delicious-posts" id="delicious_container">
       <script type="text/javascript" src="http://del.icio.us/feeds/json/<%= @profile.delicious_name %>"></script>
       <script type="text/javascript">

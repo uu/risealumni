@@ -1,10 +1,10 @@
-<% rounded_corner(:title => 'Search', :size => 'small') do %>
+<% rounded_corner(:title => t('search.search'), :size => 'small') do %>
   <% form_tag search_profiles_path, :method => :get, :class => "search_form" do %>
     <%= select(:search , :key ,SEARCH_KEYS.map{ |k| [k.titleize,k]},
       {:selected => (params[:search] && params[:search][:key])},  
       {:class => "search_blog_textbox"})%>
     <%= text_field_tag 'search[q]',
-      (params[:search] && params[:search][:q]? @q_val : 'Search'),
+      (params[:search] && params[:search][:q]? @q_val : t('search.search'),
       :id => 'search_all', :class => "search_blog_textbox" %>
     <button type="submit" class="search_blog_bt"></button>
   <% end %>

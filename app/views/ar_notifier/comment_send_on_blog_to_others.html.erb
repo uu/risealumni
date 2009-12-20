@@ -1,4 +1,4 @@
-<%= @comment.profile.first_name%> wrote on <%= @comment.commentable.profile.first_name%> Blog
+<%= t('notifier.user_wrote_on_other_blog', :user => @comment.profile.first_name, :other =>  @comment.commentable.profile.first_name) %> 
 
 <%= @comment.comment %>
 <%= render :partial => 'account_mailer/email_footer' %>

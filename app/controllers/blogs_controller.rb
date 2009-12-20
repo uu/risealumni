@@ -27,7 +27,7 @@ class BlogsController < ApplicationController
       :page => params[:page], 
       :per_page => BLOGS_PER_PAGE)
     if @my_blog && @blogs.empty?
-      flash[:notice] = 'You have not create any blog posts. Try creating one now.'
+      flash[:notice] = I18n.t('blog.notice.empty_blog')
       redirect_to new_profile_blog_path(@p) and return
     end
     @facebook_publish_feed_story = params[:facebook_publish] if current_facebook_user_logedin?
@@ -53,12 +53,12 @@ class BlogsController < ApplicationController
         data = {:blog_title => "<a href='#{profile_blog_url(@blog.profile,@blog)}'>#{@blog.title}</a>"}.to_json
         facebook_publish = "facebook_publish_blog_story('#{Facebooker.api_key}',#{tamplate_bundle_id},#{data});"
         wants.html do
-          flash[:notice] = 'New blog post created.'
+          flash[:notice] = I18n.t('blog.notice.post_created') 
           redirect_to profile_blogs_path(@p).add_param(:facebook_publish => facebook_publish)
         end
       else
         wants.html do
-          flash.now[:error] = 'Failed to create a new blog post.'
+          flash.now[:error] = I18n.t('blog.error.post_create_failed')
           render :action => :new
         end
       end
@@ -90,12 +90,12 @@ class BlogsController < ApplicationController
           data = {:blog_title => "<a href='#{profile_blog_url(@blog.profile,@blog)}'>#{@blog.title}</a>"}.to_json
           facebook_publish = "facebook_publish_blog_story('#{Facebooker.api_key}',#{tamplate_bundle_id},#{data});"
         wants.html do
-          flash[:notice]='Blog post updated.'
+          flash[:notice] = I18n.t('blog.notice.post_updated')
           redirect_to profile_blogs_path(@p).add_param(:facebook_publish => facebook_publish)
         end
       else
         wants.html do
-          flash.now[:error]='Failed to update the blog post.'
+          flash.now[:error] = I18n.t('blog.error.post_update_failed') 
           render :action => :edit
         end
       end
@@ -107,14 +107,14 @@ class BlogsController < ApplicationController
     @blog.destroy
     respond_to do |wants|
       wants.html do
-        flash[:notice]='Blog post deleted.'
+        flash[:notice] = I18n.t('blog.notice.post_deleted')
         redirect_to profile_blogs_path(@p)
       end
     end
   end
   
   def search_blog
-    @title = "Search"
+    @title = I18n.t('search.search')
     @q = params[:search][:blog]
     unless params[:search][:blog].blank?
       @blogs = Blog.search_blog(params[:search][:blog]) 
@@ -127,7 +127,7 @@ class BlogsController < ApplicationController
   def blogs_by_tag
     tag = Tag.find(params[:tag_id])
     @blogs = Blog.find_tagged_with(tag)
-    @title = "Blogs about #{tag}"
+    @title = I18n.t('blog.blogs_tag')+" #{tag}"
     render :action => :search_blog
   end
   

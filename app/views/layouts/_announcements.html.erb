@@ -1,7 +1,7 @@
 <% unless current_announcements.empty? %>
   <div id="announcement">
     <div id ="announcement_close"><%= link_to_remote("x", :url => "/javascripts/hide_announcement") %></div>
-    <p><i>Announcements:</i></p>
+    <p><i><%= t('announcement.announcements') %> :</i></p>
     <% for announcement in current_announcements %>
       <p><%=h announcement.message %></p>
     <% end %>

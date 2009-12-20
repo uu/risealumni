@@ -1,8 +1,8 @@
-<%= 'Blog post titled "' + @blog.title + '" by ' + @blog.sent_by %>
+<%= t('notifier.user_send_news', :title => @blog.title, :user => @blog.sent_by %>
 
 <%= @blog.body %>
 
-<p>Follow the URL to comment on the blog.</p>
+<p><%= t('notifier.user_send_news_message') %></p>
 <%= profile_blog_url(@blog.profile, @blog) %>
 
 <%= render :partial => 'account_mailer/email_footer' %>

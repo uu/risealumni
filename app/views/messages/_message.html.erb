@@ -7,9 +7,9 @@ to_list ||= @to_list
   <span class="widget_lrg_top"></span>  
   <%= render :partial => "header_links"%>
   <div class="comments">
-    From: <%= link_to message.sender.full_name, message.sender %><br />
-    When: <%= time_ago_in_words message.created_at %> ago<br />
-    <strong>Subject: <%= h message.subject %></strong>
+    <%= t('message.from') %>: <%= link_to message.sender.full_name, message.sender %><br />
+    <%= t('message.when') %>: <%= time_ago_in_words message.created_at %> <%= t('ago') %><br />
+    <strong><%= t('mesasge.subject') %>: <%= h message.subject %></strong>
     <%= textilize message.body %>
   </div>
   <div class="message_reply_button">

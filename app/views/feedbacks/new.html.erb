@@ -1,18 +1,18 @@
 <div class="flash_message_class"><%= formatted_error_message :feedback %></div>
-<% rounded_corner(:title => 'Give us Feedback') do %>
+<% rounded_corner(:title => t('feedback.give_us_feedback')) do %>
   <div id="feedback_form" class="edit_panel_profile">
     <% form_for :feedback, :url => feedbacks_path, :method => :post do |f| 	%>
       <% f.label_class = 'label_margin' %>
       <% unless @p %>
-        <%= f.labelled_text_field('Name', :name, 
-                                  :title => "Name", :wrap_class => cycle(:row_light, :row_dark)) %>
-        <%= f.labelled_text_field('Email', :email, 
-                                :title => "Email", :wrap_class => cycle(:row_light, :row_dark)) %>        
+        <%= f.labelled_text_field(t('name'), :name, 
+                                  :title => t('name'), :wrap_class => cycle(:row_light, :row_dark)) %>
+        <%= f.labelled_text_field(t('email'), :email, 
+                                :title => t('email'), :wrap_class => cycle(:row_light, :row_dark)) %>        
       <% end %>
-      <%= f.labelled_text_field('Subject', :subject, 
-                                :title => "Subject", :wrap_class => cycle(:row_light, :row_dark)) %>
-      <%= f.labelled_text_area('Message', :message, 
-                               :title => "Message", :wrap_class => "#{cycle(:row_light, :row_dark)}_large") %>
+      <%= f.labelled_text_field(t('subject'), :subject, 
+                                :title => t('subject'), :wrap_class => cycle(:row_light, :row_dark)) %>
+      <%= f.labelled_text_area(t('message'), :message, 
+                               :title => t('message'), :wrap_class => "#{cycle(:row_light, :row_dark)}_large") %>
       <% unless @test || @p %>
         <div class="<%= cycle(:row_light, :row_dark) %>">
           <%= captcha_field_with_options(:feedback, 

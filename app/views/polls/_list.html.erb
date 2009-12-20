@@ -12,7 +12,7 @@ total = profile.polls.count
   <div class="widget_large">
     <span class="widget_lrg_top"></span>
     <%= slide_up_down_header('show','polls_info',
-                        "Most Recent Polls<span> (latest #{polls.size } of #{total > size ? link_to( total, profile_polls_path(profile)) : total})</span>")%>
+                        t('poll.most_recent', :count => polls.size, :total => total > size ? link_to( total, profile_polls_path(profile)) : total))%>
     <div id="polls_info">
       <div class="complete_middle_panel">
         <% polls.each do |p| %>

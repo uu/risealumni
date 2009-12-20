@@ -1,20 +1,20 @@
-<% rounded_corner(:title => "Announcements", :size => 'lrg') do %>
-  <%= button_to "New", new_announcement_path(), :method => :get %>
+<% rounded_corner(:title => t('announcement.announcements'), :size => 'lrg') do %>
+  <%= button_to t('new'), new_announcement_path(), :method => :get %>
   <table>
     <tr>
-      <th>Message</th>
-      <th>Start</th>
-      <th>End</th>
-      <th>Edit</th>
-      <th>Delete</th>
+      <th><%= t('message') %></th>
+      <th><%= t('start') %></th>
+      <th><%= t('end') %></th>
+      <th><%= t('edit') %></th>
+      <th><%= t('delete') %></th>
     </tr>
     <% for announcement in @announcements %>
       <tr>
         <td><%= announcement.message %></td>
         <td><%= announcement.starts_at.to_formatted_s(:rfc822) %></td>
         <td><%= announcement.ends_at.to_formatted_s(:rfc822) %></td>
-        <td><%= link_to image_tag('edit.png', :title => "Edit Announcement"), edit_announcement_path(announcement)%></td>
-        <td><%= link_to image_tag('delete.png', :title => "Delete Announcement"), announcement_path(announcement), :method => :delete %></td>
+        <td><%= link_to image_tag('edit.png', :title => t('announcement.edit'), edit_announcement_path(announcement)%></td>
+        <td><%= link_to image_tag('delete.png', :title => t('announcement.delete'), announcement_path(announcement), :method => :delete %></td>
       </tr>
     <% end %>
   </table>

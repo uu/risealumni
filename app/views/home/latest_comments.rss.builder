@@ -2,10 +2,11 @@
 xml.instruct! :xml, :version=>"1.0"
 xml.rss(:version=>"2.0") do
   xml.channel do
-    xml.title "#{SITE_NAME} Latest Comments Feed"
+    xml.title SITE_NAME + t('comment.latest_comments')
     xml.link SITE
-    xml.description "All the action for #{SITE_NAME}"
-    xml.language 'en-us'
+    xml.description SITE_NAME + t('comment.latest_comments')
+#     xml.description "All the action for #{SITE_NAME}"
+#     xml.language 'en-us'
     Comment.recent_comments.each do |c|
       xml.item do
         xml.title commentable_text(c, false)

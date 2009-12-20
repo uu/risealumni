@@ -1,5 +1,5 @@
-<%= @inviter.full_name %> is now following you on <%= SITE_NAME %> (http://<%= SITE %>).  
+<%= t('notifier.user_is_following_you', :user => @inviter.full_name, :sitename => SITE_NAME, :site => SITE) %>  
 
-You can go view their profile here: <%= profile_url @inviter, :host=>SITE %>
-<%= @inviter.full_name %> is now in your <%= @description %> list.
+<%= t('notifier.user_is_following_you_message') %> <%= profile_url @inviter, :host=>SITE %>
+<%= t('notifier.user_is_now_in_your_list', :user => @inviter.full_name, :list => @description) %>
 <%= render :partial => 'account_mailer/email_footer' %>

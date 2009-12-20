@@ -28,7 +28,7 @@
       <div class="content_container">
         <div class="login_container" id="info">
           <% if @u.nil? or @u.new_record? or !@u.email_verified %>
-            <span class="welcome_msg">Welcome to <%= SITE_NAME_FULL %>.</span>
+            <span class="welcome_msg"><%= t('admin.welcome', :site => SITE_NAME_FULL %>.</span>
           <% else %>
             <%= render :partial => "shared/header_tab" %>
           <% end %>

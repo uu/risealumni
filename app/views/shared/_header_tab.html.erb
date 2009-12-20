@@ -1,14 +1,14 @@
 <ul class="menu">
-  <li class="menu_text"><%= link_to "Home", home_path %> | </li>
+  <li class="menu_text"><%= link_to t('my.home'), home_path %> | </li>
   <% if @p %>
-    <li class="menu_text"><%= link_to('My Profile', @p) %> | </li>
-    <li class="menu_text"><%= link_to 'My Blog', profile_blogs_path(@p) %> | </li>
-    <li class="menu_text"><%= link_to 'My Polls', profile_polls_path(@p) %> | </li>
-    <li class="menu_text"><%= link_to 'My Friends', network_profile_path(@p) %> | </li>
-    <li class="menu_text"><%= link_to 'My Messages', profile_messages_path(@p) %> <%= message_count%> </li>
+    <li class="menu_text"><%= link_to(t('my.profile'), @p) %> | </li>
+    <li class="menu_text"><%= link_to t('my.blog'), profile_blogs_path(@p) %> | </li>
+    <li class="menu_text"><%= link_to t('my.polls'), profile_polls_path(@p) %> | </li>
+    <li class="menu_text"><%= link_to t('my.friends'), network_profile_path(@p) %> | </li>
+    <li class="menu_text"><%= link_to t('my.messages'), profile_messages_path(@p) %> <%= message_count%> </li>
     <%if @is_admin %>
       <li class="menu_text"> | </li>
-      <li class="menu_text"><%= link_to('Admin', admin_home_path)  %> </li>
+      <li class="menu_text"><%= link_to(t('my.admin'), admin_home_path)  %> </li>
     <% end %>
   <% end %>
 </ul>
@@ -16,9 +16,9 @@
 <div class="logout_container">
   <%= icon(@p, :small_20, :align => :top) unless @p.blank? %>
   <span class="menu_text"><%= @p.full_name %></span>
-  <%= link_to 'Edit Account', edit_account_profile_path(@p) if @p %>
-  <%= link_to image_tag('edit.png', :title => "Edit Profile", :class => "img01"), edit_profile_path(@p) if @p %>
-  <%= link_to "Edit Profile", edit_profile_path(@p) if @p %>
-  <%= link_to(image_tag("logout.png", :title=>"Logout", :align=>"top"), logout_path ,:class=>"logoutuser") %>
-  <%= link_to('Logout', logout_path) %>
+  <%= link_to t('account.edit'), edit_account_profile_path(@p) if @p %>
+  <%= link_to image_tag('edit.png', :title => t('profile.edit'), :class => "img01"), edit_profile_path(@p) if @p %>
+  <%= link_to t('profile.edit'), edit_profile_path(@p) if @p %>
+  <%= link_to(image_tag("logout.png", :title=>t('logout'), :align=>"top"), logout_path ,:class=>"logoutuser") %>
+  <%= link_to(t('logout'), logout_path) %>
 </div>

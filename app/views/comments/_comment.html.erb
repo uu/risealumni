@@ -9,8 +9,8 @@ c = comment.comment.dup.gsub(/\[youtube:+.+\]/, '')
 <div id="<%= comment.dom_id %>">
   <div class="comments">
     <%= icon comment.profile, :small%>
-    <strong><%= link_to h(comment.profile.full_name), comment.profile %> commented
-    <%= time_ago_in_words comment.created_at %> ago</strong>
+    <strong><%= link_to h(comment.profile.full_name), comment.profile %> <%= t('comment.commented') %>
+    <%= time_ago_in_words comment.created_at %> <%= t('ago') %></strong>
     <div class="comment_text"><%= sanitize(textilize(c)) %></div>
   </div>
   <% if !comment.blank? && @p && check_comment(comment) %>

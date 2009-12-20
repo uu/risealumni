@@ -2,14 +2,14 @@
   <div class="ad">
     <span class="ad_widget_top"></span>
     <div class="clear_div"></div>
-    <h2 class="widget_title">Supporters</h2>
+    <h2 class="widget_title"><%= t('profile.supporters') %></h2>
     <%= render :partial => 'shared/ads', :collection => AD_ARRAY %>
     <span class="ad_widget_btm"></span>
   </div>
 <% end %>
 
 <%= render :partial => 'profiles/featured' %>
-<%= render :partial => "shared/search_by_keyword"  if @p%>
+<%= render :partial => "shared/search_by_keyword" if @p%>
 <%= render :partial => 'profiles/greets' if @p %>
 
 
@@ -34,9 +34,9 @@
 <% end %>
 
 <%if TWITTER_ENABLED %>
-  <% rounded_corner(:size => 'small', :title => 'Follow on Twitter') do %>
+  <% rounded_corner(:size => 'small', :title => t('follow_on_twitter')) do %>
     <div id="" class="twitter_update">
-      Follow <%= SITE_NAME %> on <%=  link_to "Twitter", TWITTER_FOLLOW_URL %> 
+      <%= t('follow_on_twitter_link', :site => SITE_NAME %> <%=  link_to "Twitter", TWITTER_FOLLOW_URL %> 
     </div>
   <% end %>
 <%end%>

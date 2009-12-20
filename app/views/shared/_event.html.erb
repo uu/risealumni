@@ -6,26 +6,26 @@
                 show_event_path(event) %>
                
     <%- if @u&& @u.is_admin? -%>
-      <%= link_to image_tag('edit.png', :title => "Edit Event"), 
+      <%= link_to image_tag('edit.png', :title => t('event.edit')), 
                   edit_admin_event_path(event)%>
-      <%= link_to image_tag('delete.png', :title => "Delete Event"), 
+      <%= link_to image_tag('delete.png', :title => t('event.delete')), 
                   admin_event_path(event), 
                   :method => :delete %>
       <%= link_to image_tag("email_go.png", 
-                            :title => "Send Event", 
+                            :title => t('event.send'), 
                             :class => 'add_comment'), 
                   send_event_mail_admin_event_path(event),
                   :method => :post,
-                  :confirm => 'Are you sure? Do you want to send email to all users?' %>
+                  :confirm => t('blog.send_confirmation') %>
     <%- end -%>
-    <div class="created_date">Hosted by <%= event.organizers.first.full_name%> at <%=event.updated_at.to_date.to_formatted_s(:rfc822) %> </div>
+    <div class="created_date"><%= t('hosted_by') %> <%= event.organizers.first.full_name%>  <%=event.updated_at.to_date.to_formatted_s(:rfc822) %> </div>
   </h3>
   <div class="blog_text">
     <%= event.description%>
     <div class="event_location">
-      <div><span class="event_address">Start Date : </span><%= event.start_date.to_date.to_formatted_s(:rfc822)if event.start_date%></div>
-      <div class="event_end_date"><span class="event_address">End Date : </span><%= event.end_date.to_date.to_formatted_s(:rfc822)if event.end_date%></div><br/>
-      <div><span class="event_address">Location :</span><br/><%= event.place%></div>
+      <div><span class="event_address"><%= t('starts_at') %> : </span><%= event.start_date.to_date.to_formatted_s(:rfc822) if event.start_date%></div>
+      <div class="event_end_date"><span class="event_address"><%= t('ends_at') %> : </span><%= event.end_date.to_date.to_formatted_s(:rfc822) if event.end_date%></div><br/>
+      <div><span class="event_address"><%= t('profile.location')%> :</span><br/><%= event.place%></div>
     </div>
   </div>
   <% if @p && @p.user %>
@@ -34,7 +34,7 @@
         <% if event.responded? @p %>
           <%= render :partial => 'admin/events/event_response',:locals => {:event => event}%>
         <% else %>
-          <strong>RSVP:</strong><br/>
+          <strong><%= t('rsvp') %>:</strong><br/>
           <%= render :partial => 'admin/events/rsvp',:locals => {:event => event,:status => 'home_page'}%>
         <% end %>
     </div>

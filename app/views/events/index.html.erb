@@ -1,4 +1,4 @@
-<% rounded_corner(:title => 'Birthdays') do %>
+<% rounded_corner(:title => t('event.birthdays')) do %>
 
   <% birthdays = Profile.birthdays %> 
   <% birthdays.keys.sort.each do |month| %>
@@ -12,7 +12,7 @@
   <% end %>
 <% end %>
 
-<% rounded_corner(:title => 'Anniversaries') do %>
+<% rounded_corner(:title => t('event.anniversaries')) do %>
   <% anniversaries = Profile.anniversaries %> 
   <% anniversaries.keys.sort.each do |month| %>
     <b><%= Date::MONTHNAMES[month] %></b>

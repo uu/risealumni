@@ -1,16 +1,16 @@
-<% rounded_corner(:title => 'Login' + image_tag("help.png", :title => "Help", :class => "help")) do %>
+<% rounded_corner(:title => t('login_entrance') + image_tag("help.png", :title => t('help'), :class => "help")) do %>
   <div class="edit_panel_profile">
     <% form_for @user, :url => login_path, :method => :post do |f| %>
       <% f.label_class = 'label_margin' %>
-      <%= f.labelled_text_field("Username", 
+      <%= f.labelled_text_field(t('username'), 
                                 :login, 
                                 :wrap_class => cycle('row_dark','row_light')) %>
-      <%= f.labelled_password_field("Password",
+      <%= f.labelled_password_field(t('password'),
                                     :password,
                                     :wrap_class => cycle('row_dark','row_light')) %>    
       <div class="editfield_div2">
         <label>
-          <%= check_box_tag 'remember_me', 1, false, :name => 'user[remember_me]', :class => "login_checkbox" %>Remember me
+          <%= check_box_tag 'remember_me', 1, false, :name => 'user[remember_me]', :class => "login_checkbox" %><%= t('remember_me') %>
         </label>
       </div>
       <div class="large_btn_container3">

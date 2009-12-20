@@ -12,7 +12,7 @@ total = profile.forum_posts.count
   <div class="widget_large">
     <span class="widget_lrg_top"></span>
     <%= slide_up_down_header('show','posts_info',
-                        "Most Recent Forums Post<span> (latest #{posts.size } of #{total})</span>")%>
+                        t('forum_posts.most_recent', :count => posts.size, :total => total))%>
     <div id="posts_info">
       <div class="complete_middle_panel">
         <% posts.each do |post|%>

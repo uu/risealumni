@@ -12,8 +12,8 @@ end
 
 <div class="activity_box">
   <h2><%= @feedback.subject %></h2>
-  Message :<%= @feedback.message %><br/>
-  Sender Name :<%= name %><br/>
-  Sender email :<%= email %><br/>
+  <%= t('message') %> :<%= @feedback.message %><br/>
+  <%= t('name') %> :<%= name %><br/>
+  <%= t('email') %> :<%= email %><br/>
   <div class="clear"></div>
 </div>

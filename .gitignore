@@ -1,0 +1,6 @@
+log
+config/database.yml
+public/javascripts/cache/*
+public/packages/*
+tmp/*
+public/images/articles/*

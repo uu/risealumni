@@ -15,7 +15,7 @@
  %>
 <div class="widget_large">
   <span class="widget_lrg_top"></span>
-  <%= slide_up_down_header('show',"#{type}_info","#{type.titleize + (link_to ' (See All)', "#{link}" if list.size < total).to_s}")%>
+  <%= slide_up_down_header('show',"#{type}_info","#{type.titleize + (link_to t('friend.see_all'), "#{link}" if list.size < total).to_s}")%>
   <div id="<%= type %>_info">
     <div id="<%= type %>">
       <%- unless list.empty? -%>

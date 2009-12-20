@@ -1,4 +1,4 @@
-<% rounded_corner(:title => "Sign-up Now" + image_tag("help.png", :title => "Help", :class => "help")) do %>
+<% rounded_corner(:title => t('account.sign_up') + image_tag("help.png", :title => t('help'), :class => "help")) do %>
   <div class="edit_panel_profile" id="login_form">
     <% remote_form_for(:user, 
                        @user, 
@@ -26,7 +26,7 @@
       <% end %>
       <div class=<%= cycle(:row_light, :row_dark)%> id="tos">
         <%= check_box :user, :terms_of_service, {:checked => "checked"}%>
-        <%= link_to "Please Accept The Terms of Service",page_path('tos'), :popup => ['Terms of Service','height =600, width =500, scrollbars=yes']%>        
+        <%= link_to t('account.validation.accept_tos'),page_path('tos'), :popup => [t('account.tos'),'height =600, width =500, scrollbars=yes']%>        
         <div class="error"><%= @user.errors[:terms_of_service]%></div>
       </div>
       <div class="large_btn_container2" id="signup">

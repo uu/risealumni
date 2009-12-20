@@ -8,16 +8,16 @@ blog ||= @blog
   <% end %>
   <% form_for [@profile, blog] do |f| %>
     <% f.label_class = 'label_margin' %>
-    <%= f.labelled_text_field "Heading", :title, :title => "Title",:class => "big_text_field", :wrap_class => :row_complete %>
-    <%= f.labelled_text_area "Body", :body,:class => "big_text_area", :wrap_class => :row_complete_large %>
-   <p class ="poll_text">To include a youtube video use: [youtube: address_of_video] </p>
-    <%= f.labelled_text_field "Tags", :tag_list, :title => "Tags",:class => "big_text_field", :wrap_class => :row_complete %>
-    <div class="blog_text">Comma Seperated</div>
+    <%= f.labelled_text_field t('blog.heading'), :title, :title => t('blog.title'),:class => "big_text_field", :wrap_class => :row_complete %>
+    <%= f.labelled_text_area t('blog.body'), :body,:class => "big_text_area", :wrap_class => :row_complete_large %>
+   <p class ="poll_text"><%= t('blog.include_youtube') %></p>
+    <%= f.labelled_text_field t('blog.tags'), :tag_list, :title => t('blog.tags'),:class => "big_text_field", :wrap_class => :row_complete %>
+    <div class="blog_text"><%= t('comma_separated') %></div>
     <input type="hidden" name=" " id="preview_button"/>
     <div class = row_normal>
       <% if @p.is_active%>
         <div class="blog_check_box">
-          <%= check_box :blog, :public%> Public?
+          <%= check_box :blog, :public%> <%= t('blog.public') %>
         </div>
       <%end%>
     </div>

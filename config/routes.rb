@@ -109,5 +109,5 @@ ActionController::Routing::Routes.draw do |map|
   map.with_options(:controller => 'javascripts')  do |javascript|
     javascript.hide_announcement 'javascripts/hide_announcement', :action => 'hide_announcement', :format => 'js'  
   end
- 
+#Translate::Routes.translation_ui(map) if RAILS_ENV != "production"
 end

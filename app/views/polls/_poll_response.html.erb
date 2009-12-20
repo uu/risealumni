@@ -2,5 +2,5 @@
   <div>
     <%= image_tag(src=poll.get_url)%>
   </div>
-  <div class="total_vote"> Total No of Votes <%=poll.votes_count%></div>
+  <div class="total_vote"> <%= t('poll.total_votes') %> <%=poll.votes_count%></div>
 </div>

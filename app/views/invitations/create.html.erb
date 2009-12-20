@@ -1,6 +1,6 @@
-<% rounded_corner(:title => "Invite Batchmates") do %>
+<% rounded_corner(:title => t('invite.invite_batchmates')) do %>
   <div class="edit_panel_profile">
     <%= msg_profile_block %>
-    <p><%= link_to "Invite More Friends", new_profile_invitation_path(@p) %></p>
+    <p><%= link_to t('invite.invite_friends'), new_profile_invitation_path(@p) %></p>
   </div>
 <% end %>

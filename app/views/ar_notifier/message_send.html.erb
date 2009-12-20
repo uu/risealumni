@@ -1,10 +1,10 @@
-<%= @p.first_name%> sent you a message.
+<%= t('notifier.user_sends_message', :user => @p.first_name) %> 
 
 
 
 "<%=@message.body%>"
 
-To read this message, follow the link below:
+<%= t('notofier.user_sends_message_link') %>
 <%= reply_message_profile_message_url(@message.receiver,@message) %>
 
 <%= render :partial => 'account_mailer/email_footer' %>

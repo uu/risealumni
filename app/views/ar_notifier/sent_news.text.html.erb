@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><%= 'Blog post titled "' + @blog.title + '" by ' + @blog.sent_by %></title>
+<title><%= t('notifier.user_send_news', :title =>  @blog.title, :user =>  @blog.sent_by %></title>
 </head>
 
 <body>
@@ -47,7 +47,7 @@
 </table>
 <table width="627" height="29" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5">
   <tr>
-    <th scope="row">Click <%= link_to "Here",  profile_blog_url(@blog.profile, @blog) %> to comment on this blog.</th>
+    <th scope="row"><%= link_to t('notifier.user_send_news_message'), profile_blog_url(@blog.profile, @blog) %></th>
   </tr>
 </table>
 <table width="627" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5">

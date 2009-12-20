@@ -3,8 +3,8 @@
   <div class="footer_text_left">
     <%= SiteContent.get_content('footer','footer_links' ) %>
  </div>
- <div class="footer_text_right"><em>Rising Sun &copy; 2008 </em>
-    <%= link_to image_tag('RisingSun_logo.gif'), "http://www.risingsuntech.net" %>
+ <div class="footer_text_right"><em>SITE &copy; 2010 </em>
+    <%= link_to image_tag('RisingSun_logo.gif'), "http://#{SITE}" %>
   </div>
   <% if Rails.env == 'production' && !GOOGLE_ANALYTICS_TRACKER.blank? %>
     <script type="text/javascript">

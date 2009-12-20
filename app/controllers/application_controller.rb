@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def facebook_session_expired
     clear_fb_cookies!
     clear_facebook_session_information
-    flash[:error] = "Your facebook session has been expired."
+    flash[:error] = I18n.t('facebook.error.session_expired') 
     redirect_back_or_default home_path()
  end
   
@@ -94,8 +94,8 @@ class ApplicationController < ActionController::Base
   
   def search_results
     p = params[:search] ? params[:search].dup : {}
-    @title = "Search"    
-    @q , @q_val = p[:key] ? ["Search for Friends",p[:q]] : [p[:q],"Search"]      
+    @title = I18n.t('search.search')
+    @q , @q_val = p[:key] ? [I18n.t('search.friends'),p[:q]] : [p[:q],I18n.t('search.search')]
     if p[:key] && p[:key]== "blog" # For Blog Search
       @blogs = Blog.search_blog(params[:search][:q])
       render :template =>"/blogs/search_blog"
@@ -141,11 +141,11 @@ class ApplicationController < ActionController::Base
 
   def failed_check_permissions
     if !@development
-      flash[:error] = 'It looks like you don\'t have permission to view that page.'
+      flash[:error] = I18n.t('application.error.no_permission_to_view') 
       redirect_back_or_default home_path and return true
     else
       render :text=><<-EOS
-      <h1>It looks like you don't have permission to view this page.</h1>
+      <h1>#{I18n.t('application.error.no_permission_to_view')}</h1>
       <div>
         Permissions: #{@level.inspect}<br />
         Controller: #{controller_name}<br />
@@ -182,13 +182,8 @@ class ApplicationController < ActionController::Base
   end
   
   def failed_check_access_permissions
-    if !@development
-      flash[:error] = 'It looks like you don\'t have permission to view that page.'
-      redirect_back_or_default home_path and return true
-    else
-      flash[:error] = 'It looks like you don\'t have permission to view that page.'
-      redirect_back_or_default home_path and return true
-    end
+    flash[:error] = I18n.t('application.error.no_permission_to_view') 
+    redirect_back_or_default home_path and return true
     @level = []
     false
   end
