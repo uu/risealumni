@@ -1,0 +1,186 @@
+--- 
+account: 
+  about_me: "About Me"
+  anniversary: Anniversary
+  default_permission: "Default Permission"
+  error: 
+    email_not_found: "Could not find that email address. Try again."
+    login_not_valid: "Uh-oh, login didn't work. Do you have caps locks on? Try it again."
+  facebook_connect: "Facebook Connect"
+  house_name: "House Name"
+  notice: 
+    confirmation_invalid: "We're sorry but it seems that the confirmation did not go thru. You may have provided an expired key."
+    email_already_confirmed: "Your email is already confirmed by us. Please login to continue."
+    email_confirmed: "Thanks your email is confirmed by us. Please login to continue"
+    profile_activation_problem: "We're sorry but it seems that there was a problem activating your profile. Please contact the administrators to resolve the issue."
+  please_login: "Please {{login}} or {{signup}} to participate!"
+  referral: 
+    message: "Additional Message"
+    name: "Referral Person Name"
+    year: "Referral Person Year"
+  requested_email: "Requested New Email"
+  sign_up: "Sign-up Now"
+  sign_up_confirmation_message: "Please click on the confirmation link sent to <strong>{{email}}</strong>to verify and continue.  Do keep in mind that sometimes email might end up in your spam/junk folder,  in that case, please configure your email client to receive all email from  <strong>{{site}}</strong> as not junk."
+  spouse_name: "Spouse Name"
+  validation: 
+    accept_tos: "Please Accept The Terms of Service"
+    email_already_taken: "This email has already been taken"
+    email_available: "This email is available"
+    login_already_taken: "This login has already been taken"
+    login_available: "This login is available"
+activate: Activate
+activerecord: 
+  errors: 
+    full_messages: 
+      format: "{{attribute}} {{message}}"
+    messages: 
+      accepted: "must be accepted"
+admin: 
+  welcome: "Welcome to {{site}}"
+ago: ago
+announcement: 
+  notice: 
+    not_successfully_updated: "Announcement was not successfully updated."
+    successfully_deleted: "Announcement was successfully deleted."
+    successfully_updated: "Announcement was successfully updated."
+  update_create: "Announcement Update/Create"
+application: 
+  error: 
+    no_permission_to_view: "It looks like you don't have permission to view that page."
+blog: 
+  posted_at: "posted at {{postdate}}"
+blogged: blogged
+comma_separated: "Comma Seperated"
+comment: 
+  wall_to_wall_with: "Wall-to-Wall with {{user}}"
+confirm: "Are you sure?"
+deactivate: Deactivate
+delete: Delete
+description: Description
+edit: Edit
+email: Email
+end: End
+ends_at: "Ends at"
+event: 
+  anniversaries: Anniversaries
+  anniversary: Anniversary
+  birthday: Birthday
+  birthdays: Birthdays
+  delete: "Delete Event"
+  edit: "Edit Event"
+  send: "Send Event"
+facebook: 
+  error: 
+    session_expired: "Your facebook session has been expired."
+feed_item: 
+  user_comment_icon: "User Comment Icon"
+  user_invited: "{{inviter}} is now a {{description}} of {{invited}}"
+  user_photo_icon: "User Photo Icon"
+  user_updated_profile: "{{user}} has updated their profile"
+feedback: 
+  delete: Destroy
+  feedback: Feedback
+  give_us_feedback: "Give us Feedback"
+follow_on_twitter: "Follow on Twitter"
+follow_on_twitter_link: "Follow {{site}} on "
+forum: 
+  delete: "Delete Forum"
+  edit: "Edit Forum"
+  forum: Forum
+  forums: Forums
+  last_post: "Last Post"
+  new: "Create New Forum"
+  no_forums: "{{site}} has no forums."
+  posts: Posts
+  topic_starter: "Topic Starter"
+  topics: Topics
+forum_posts: 
+  delete: "Delete Post"
+  most_recent: "Most Recent Forums Posts<span> (latest {{count}} of {{total}})</span>"
+  post_by_followup: "Post By Followup"
+forum_topic: 
+  back_to_forum: "Back to Forum"
+  back_to_forums: "Back to Forums"
+  delete: "Delete Topic"
+  edit: "Edit Forum Topic"
+  new: "New Forum Topic"
+friend: 
+  following: Following
+  see_all: "(See All)"
+group: Group
+groups: Groups
+help: Help
+hi: "Hi {{user}}"
+home: 
+  credits: Credits
+hosted_by: "Hosted by"
+invite: 
+  email_list: "Enter a list of email addresses separated by commas (,)"
+  email_list_title: "Comma Separated List of Emails"
+  invite_batchmates: "Invite Batchmates"
+location: Location
+login: Login
+login_entrance: Login
+logout: Logout
+message: Message
+my: 
+  admin: Admin
+  blog: "My Blog"
+  direct_message: "Direct Message"
+  friends: "My Friends"
+  home: Home
+  messages: "My Messages"
+  polls: "My Polls"
+  profile: "My Profile"
+  read_blogs: "Read My Blogs"
+  see_polls: "See My Polls"
+name: Name
+new: New
+notifier: 
+  user_is_following_you: "{{user}} is now following you on {{sitename}} (http://{{site}})."
+  user_is_following_you_message: "You can go view their profile here:"
+  user_is_now_in_your_list: "{{user}} is now in your {{list}} list"
+  user_send_news: "Blog post titled {{title}} by {{user}}"
+  user_send_news_message: "Follow the URL to comment on the blog."
+  user_sends_message: "{{user}} sent the following message :"
+  user_sends_message_link: "To read this message, follow the link below:"
+  user_status: "Your profile has now been {{status}}"
+  user_unfriends_you: "{{user}} has deleted you as friend on {{site}}"
+  user_wrote_on_other_blog: "{{user}} wrote on {{other}} Blog"
+  user_wrote_on_your_blog: "{{user}} wrote on your Blog"
+  user_wrote_on_your_wall: "{{user}} wrote on your Wall"
+number: 
+  currency: 
+    format: 
+      delimiter: ","
+  format: 
+    delimiter: ","
+password: Password
+password_confirm: "Confirm Password"
+photo: 
+  caption: Caption
+  crop: "Crop the image"
+  delete: "Delete Image"
+  new: "Create new {{image}}"
+  no_images: "{{site}} has no {{image}}"
+poll: 
+  close: "Close Poll"
+  delete: "Delete Poll"
+  edit: "Edit Poll"
+  most_recent: "Most Recent Polls<span> (latest {{count}} of {{total}})</span>"
+  user_has_no_polls: "{{user}} has no polls"
+posted: Posted
+profile: 
+  twitter_username: "Twitter Login"
+remember_me: "Remember me"
+rsvp: RSVP
+save: Save
+search: 
+  friends: "Search for Friends"
+  search: Search
+start: Start
+starts_at: "Starts at"
+subject: Subject
+tags: Tags
+title: Title
+username: Username
